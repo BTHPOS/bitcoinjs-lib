@@ -1,47 +1,51 @@
 {
-  "name": "bitcoinjs-lib",
-  "version": "4.0.2",
-  "description": "Client-side Bitcoin JavaScript library",
+  "name": "bethjs-lib",
+  "version": "3.3.3",
+  "description": "Client-side Bithereum JavaScript library",
   "main": "./src/index.js",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=4.0.0"
   },
   "keywords": [
     "bitcoinjs",
     "bitcoin",
     "browserify",
     "javascript",
-    "bitcoinjs"
+    "bitcoinjs",
+    "bithereumjs",
+    "bethjs-lib"
   ],
   "scripts": {
     "coverage-report": "nyc report --reporter=lcov",
     "coverage-html": "nyc report --reporter=html",
     "coverage": "nyc --check-coverage --branches 90 --functions 90 mocha",
-    "integration": "mocha --timeout 50000 test/integration/",
+    "integration": "mocha test/integration/",
     "standard": "standard",
     "test": "npm run standard && npm run coverage",
-    "unit": "mocha"
+    "unit": "mocha",
+    "fix": "standard --fix"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitcoinjs/bitcoinjs-lib.git"
+    "url": "https://github.com/BTHPOS/bitcoinjs-lib.git"
   },
   "files": [
     "src"
   ],
   "dependencies": {
     "bech32": "^1.1.2",
-    "bip32": "^1.0.0",
+    "bigi": "^1.4.0",
     "bip66": "^1.1.0",
-    "bitcoin-ops": "^1.4.0",
+    "bitcoin-ops": "^1.3.0",
     "bs58check": "^2.0.0",
     "create-hash": "^1.1.0",
     "create-hmac": "^1.1.3",
+    "ecurve": "^1.0.0",
+    "equihashjs-verify": "^1.0.5",
     "merkle-lib": "^2.0.10",
     "pushdata-bitcoin": "^1.0.1",
     "randombytes": "^2.0.1",
-    "safe-buffer": "^5.1.1",
-    "tiny-secp256k1": "^1.0.0",
+    "safe-buffer": "^5.0.1",
     "typeforce": "^1.11.3",
     "varuint-bitcoin": "^1.0.4",
     "wif": "^2.0.1"
@@ -49,16 +53,14 @@
   "devDependencies": {
     "bip39": "^2.3.0",
     "bip65": "^1.0.1",
-    "bip68": "^1.0.3",
-    "bn.js": "^4.11.8",
     "bs58": "^4.0.0",
-    "dhttp": "^3.0.0",
-    "hoodwink": "^2.0.0",
+    "dhttp": "^2.4.2",
+    "hoodwink": "^1.0.0",
     "minimaldata": "^1.0.2",
-    "mocha": "^5.2.0",
-    "nyc": "^11.8.0",
-    "proxyquire": "^2.0.1",
-    "standard": "^11.0.1"
+    "mocha": "^5.0.1",
+    "nyc": "^11.4.1",
+    "proxyquire": "^1.4.0",
+    "standard": "^9.0.2"
   },
   "license": "MIT"
 }

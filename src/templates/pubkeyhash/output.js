@@ -1,10 +1,12 @@
 // OP_DUP OP_HASH160 {pubKeyHash} OP_EQUALVERIFY OP_CHECKSIG
 
-const bscript = require('../../script')
-const OPS = require('bitcoin-ops')
+var bscript = require('../../script')
+var types = require('../../types')
+var typeforce = require('typeforce')
+var OPS = require('bitcoin-ops')
 
 function check (script) {
-  const buffer = bscript.compile(script)
+  var buffer = bscript.compile(script)
 
   return buffer.length === 25 &&
     buffer[0] === OPS.OP_DUP &&
@@ -15,4 +17,26 @@ function check (script) {
 }
 check.toJSON = function () { return 'pubKeyHash output' }
 
-module.exports = { check }
+function encode (pubKeyHash) {
+  typeforce(types.Hash160bit, pubKeyHash)
+
+  return bscript.compile([
+    OPS.OP_DUP,
+    OPS.OP_HASH160,
+    pubKeyHash,
+    OPS.OP_EQUALVERIFY,
+    OPS.OP_CHECKSIG
+  ])
+}
+
+function decode (buffer) {
+  typeforce(check, buffer)
+
+  return buffer.slice(3, 23)
+}
+
+module.exports = {
+  check: check,
+  decode: decode,
+  encode: encode
+}

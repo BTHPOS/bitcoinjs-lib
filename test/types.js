@@ -1,12 +1,25 @@
-const { describe, it } = require('mocha')
-const assert = require('assert')
-const types = require('../src/types')
-const typeforce = require('typeforce')
+/* global describe, it */
+
+var assert = require('assert')
+var types = require('../src/types')
+var typeforce = require('typeforce')
 
 describe('types', function () {
+  describe('BigInt/ECPoint', function () {
+    it('return true for duck types', function () {
+      assert(types.BigInt(new function BigInteger () {}()))
+      assert(types.ECPoint(new function Point () {}()))
+    })
+
+    it('return false for bad types', function () {
+      assert(!types.BigInt(new function NotABigInteger () {}()))
+      assert(!types.ECPoint(new function NotAPoint () {}()))
+    })
+  })
+
   describe('Buffer Hash160/Hash256', function () {
-    const buffer20byte = Buffer.alloc(20)
-    const buffer32byte = Buffer.alloc(32)
+    var buffer20byte = Buffer.alloc(20)
+    var buffer32byte = Buffer.alloc(32)
 
     it('return true for valid size', function () {
       assert(types.Hash160bit(buffer20byte))

@@ -1,6 +1,6 @@
-const typeforce = require('typeforce')
+var typeforce = require('typeforce')
 
-const UINT31_MAX = Math.pow(2, 31) - 1
+var UINT31_MAX = Math.pow(2, 31) - 1
 function UInt31 (value) {
   return typeforce.UInt32(value) && value <= UINT31_MAX
 }
@@ -10,16 +10,18 @@ function BIP32Path (value) {
 }
 BIP32Path.toJSON = function () { return 'BIP32 derivation path' }
 
-const SATOSHI_MAX = 21 * 1e14
+var SATOSHI_MAX = 21 * 1e14
 function Satoshi (value) {
   return typeforce.UInt53(value) && value <= SATOSHI_MAX
 }
 
 // external dependent types
-const ECPoint = typeforce.quacksLike('Point')
+var BigInt = typeforce.quacksLike('BigInteger')
+var ECPoint = typeforce.quacksLike('Point')
 
 // exposed, external API
-const Network = typeforce.compile({
+var ECSignature = typeforce.compile({ r: BigInt, s: BigInt })
+var Network = typeforce.compile({
   messagePrefix: typeforce.oneOf(typeforce.Buffer, typeforce.String),
   bip32: {
     public: typeforce.UInt32,
@@ -31,10 +33,12 @@ const Network = typeforce.compile({
 })
 
 // extend typeforce types with ours
-const types = {
+var types = {
+  BigInt: BigInt,
   BIP32Path: BIP32Path,
   Buffer256bit: typeforce.BufferN(32),
   ECPoint: ECPoint,
+  ECSignature: ECSignature,
   Hash160bit: typeforce.BufferN(20),
   Hash256bit: typeforce.BufferN(32),
   Network: Network,

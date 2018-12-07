@@ -1,11 +1,11 @@
-const Buffer = require('safe-buffer').Buffer
-const bcrypto = require('./crypto')
-const fastMerkleRoot = require('merkle-lib/fastRoot')
-const typeforce = require('typeforce')
-const types = require('./types')
-const varuint = require('varuint-bitcoin')
+var Buffer = require('safe-buffer').Buffer
+var bcrypto = require('./crypto')
+var fastMerkleRoot = require('merkle-lib/fastRoot')
+var typeforce = require('typeforce')
+var types = require('./types')
+var varuint = require('varuint-bitcoin')
 
-const Transaction = require('./transaction')
+var Transaction = require('./transaction')
 
 function Block () {
   this.version = 1
@@ -19,25 +19,25 @@ function Block () {
 Block.fromBuffer = function (buffer) {
   if (buffer.length < 80) throw new Error('Buffer too small (< 80 bytes)')
 
-  let offset = 0
+  var offset = 0
   function readSlice (n) {
     offset += n
     return buffer.slice(offset - n, offset)
   }
 
   function readUInt32 () {
-    const i = buffer.readUInt32LE(offset)
+    var i = buffer.readUInt32LE(offset)
     offset += 4
     return i
   }
 
   function readInt32 () {
-    const i = buffer.readInt32LE(offset)
+    var i = buffer.readInt32LE(offset)
     offset += 4
     return i
   }
 
-  const block = new Block()
+  var block = new Block()
   block.version = readInt32()
   block.prevHash = readSlice(32)
   block.merkleRoot = readSlice(32)
@@ -48,22 +48,22 @@ Block.fromBuffer = function (buffer) {
   if (buffer.length === 80) return block
 
   function readVarInt () {
-    const vi = varuint.decode(buffer, offset)
+    var vi = varuint.decode(buffer, offset)
     offset += varuint.decode.bytes
     return vi
   }
 
   function readTransaction () {
-    const tx = Transaction.fromBuffer(buffer.slice(offset), true)
+    var tx = Transaction.fromBuffer(buffer.slice(offset), true)
     offset += tx.byteLength()
     return tx
   }
 
-  const nTransactions = readVarInt()
+  var nTransactions = readVarInt()
   block.transactions = []
 
   for (var i = 0; i < nTransactions; ++i) {
-    const tx = readTransaction()
+    var tx = readTransaction()
     block.transactions.push(tx)
   }
 
@@ -91,7 +91,7 @@ Block.prototype.getId = function () {
 }
 
 Block.prototype.getUTCDate = function () {
-  const date = new Date(0) // epoch
+  var date = new Date(0) // epoch
   date.setUTCSeconds(this.timestamp)
 
   return date
@@ -99,9 +99,9 @@ Block.prototype.getUTCDate = function () {
 
 // TODO: buffer, offset compatibility
 Block.prototype.toBuffer = function (headersOnly) {
-  const buffer = Buffer.allocUnsafe(this.byteLength(headersOnly))
+  var buffer = Buffer.allocUnsafe(this.byteLength(headersOnly))
 
-  let offset = 0
+  var offset = 0
   function writeSlice (slice) {
     slice.copy(buffer, offset)
     offset += slice.length
@@ -129,7 +129,7 @@ Block.prototype.toBuffer = function (headersOnly) {
   offset += varuint.encode.bytes
 
   this.transactions.forEach(function (tx) {
-    const txSize = tx.byteLength() // TODO: extract from toBuffer?
+    var txSize = tx.byteLength() // TODO: extract from toBuffer?
     tx.toBuffer(buffer, offset)
     offset += txSize
   })
@@ -142,9 +142,9 @@ Block.prototype.toHex = function (headersOnly) {
 }
 
 Block.calculateTarget = function (bits) {
-  const exponent = ((bits & 0xff000000) >> 24) - 3
-  const mantissa = bits & 0x007fffff
-  const target = Buffer.alloc(32, 0)
+  var exponent = ((bits & 0xff000000) >> 24) - 3
+  var mantissa = bits & 0x007fffff
+  var target = Buffer.alloc(32, 0)
   target.writeUInt32BE(mantissa, 28 - exponent)
   return target
 }
@@ -153,7 +153,7 @@ Block.calculateMerkleRoot = function (transactions) {
   typeforce([{ getHash: types.Function }], transactions)
   if (transactions.length === 0) throw TypeError('Cannot compute merkle root for zero transactions')
 
-  const hashes = transactions.map(function (transaction) {
+  var hashes = transactions.map(function (transaction) {
     return transaction.getHash()
   })
 
@@ -163,13 +163,13 @@ Block.calculateMerkleRoot = function (transactions) {
 Block.prototype.checkMerkleRoot = function () {
   if (!this.transactions) return false
 
-  const actualMerkleRoot = Block.calculateMerkleRoot(this.transactions)
+  var actualMerkleRoot = Block.calculateMerkleRoot(this.transactions)
   return this.merkleRoot.compare(actualMerkleRoot) === 0
 }
 
 Block.prototype.checkProofOfWork = function () {
-  const hash = this.getHash().reverse()
-  const target = Block.calculateTarget(this.bits)
+  var hash = this.getHash().reverse()
+  var target = Block.calculateTarget(this.bits)
 
   return hash.compare(target) <= 0
 }
