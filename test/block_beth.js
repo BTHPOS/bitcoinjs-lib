@@ -69,8 +69,8 @@ describe('BlockBeth', function () {
         if (f.prevBlocksHex) {
           var prevBlocks = []
           f.prevBlocksHex.forEach(b => {
-            var BlockBeth = BlockBeth.fromHex(b)
-            prevBlocks.push(BlockBeth)
+            var c = BlockBeth.fromHex(b)
+            prevBlocks.push(c)
           })
 
           isValid = block.checkProofOfWork(true, network, prevBlocks)
@@ -89,8 +89,8 @@ describe('BlockBeth', function () {
         if (f.prevBlocksHex) {
           var prevBlocks = []
           f.prevBlocksHex.forEach(b => {
-            var BlockBeth = BlockBeth.fromHex(b)
-            prevBlocks.push(BlockBeth)
+            var c = BlockBeth.fromHex(b)
+            prevBlocks.push(c)
           })
 
           isValid = block.checkProofOfWork(false, network, prevBlocks)

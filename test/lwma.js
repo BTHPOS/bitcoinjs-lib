@@ -15,8 +15,8 @@ describe('lwma', function () {
         var prevBlocks = []
         var network = networks[f.network]
         f.prevBlocksHex.forEach(b => {
-          var BlockBeth = BlockBeth.fromHex(b)
-          prevBlocks.push(BlockBeth)
+          var c = BlockBeth.fromHex(b)
+          prevBlocks.push(c)
         })
 
         var bits = lwma.calcNextBits(block, prevBlocks, network.lwma)
@@ -30,8 +30,8 @@ describe('lwma', function () {
         var prevBlocks = []
         var network = networks[f.network]
         f.prevBlocksHex.forEach(b => {
-          var BlockBeth = BlockBeth.fromHex(b)
-          prevBlocks.push(BlockBeth)
+          var c = BlockBeth.fromHex(b)
+          prevBlocks.push(c)
         })
 
         try {
