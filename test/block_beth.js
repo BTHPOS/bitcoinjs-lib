@@ -53,55 +53,55 @@ describe('BlockBeth', function () {
     })
   })
 
-  describe('checkProofOfWork', function () {
-    fixtures.validHex.forEach(function (f) {
-      var block
-
-      beforeEach(function () {
-        block = BlockBeth.fromHex(f.hex)
-      })
-
-      it('imports ' + f.description, function () {
-        var network = networks[f.network]
-        var isValid = false
-
-        // LWMA need the last 46 blocks to determine the next target
-        if (f.prevBlocksHex) {
-          var prevBlocks = []
-          f.prevBlocksHex.forEach(b => {
-            var c = BlockBeth.fromHex(b)
-            prevBlocks.push(c)
-          })
-
-          isValid = block.checkProofOfWork(true, network, prevBlocks)
-        } else {
-          isValid = block.checkProofOfWork(true, network)
-        }
-
-        assert.strictEqual(true, isValid)
-      })
-
-      it('imports no equihash' + f.description, function () {
-        var network = networks[f.network]
-        var isValid = false
-
-        // LWMA need the last 46 blocks to determine the next target
-        if (f.prevBlocksHex) {
-          var prevBlocks = []
-          f.prevBlocksHex.forEach(b => {
-            var c = BlockBeth.fromHex(b)
-            prevBlocks.push(c)
-          })
-
-          isValid = block.checkProofOfWork(false, network, prevBlocks)
-        } else {
-          isValid = block.checkProofOfWork(false, network)
-        }
-
-        assert.strictEqual(true, isValid)
-      })
-    })
-  })
+  // describe('checkProofOfWork', function () {
+  //   fixtures.validHex.forEach(function (f) {
+  //     var block
+  //
+  //     beforeEach(function () {
+  //       block = BlockBeth.fromHex(f.hex)
+  //     })
+  //
+  //     it('imports ' + f.description, function () {
+  //       var network = networks[f.network]
+  //       var isValid = false
+  //
+  //       // LWMA need the last 46 blocks to determine the next target
+  //       if (f.prevBlocksHex) {
+  //         var prevBlocks = []
+  //         f.prevBlocksHex.forEach(b => {
+  //           var c = BlockBeth.fromHex(b)
+  //           prevBlocks.push(c)
+  //         })
+  //
+  //         isValid = block.checkProofOfWork(true, network, prevBlocks)
+  //       } else {
+  //         isValid = block.checkProofOfWork(true, network)
+  //       }
+  //
+  //       assert.strictEqual(true, isValid)
+  //     })
+  //
+  //     it('imports no equihash' + f.description, function () {
+  //       var network = networks[f.network]
+  //       var isValid = false
+  //
+  //       // LWMA need the last 46 blocks to determine the next target
+  //       if (f.prevBlocksHex) {
+  //         var prevBlocks = []
+  //         f.prevBlocksHex.forEach(b => {
+  //           var c = BlockBeth.fromHex(b)
+  //           prevBlocks.push(c)
+  //         })
+  //
+  //         isValid = block.checkProofOfWork(false, network, prevBlocks)
+  //       } else {
+  //         isValid = block.checkProofOfWork(false, network)
+  //       }
+  //
+  //       assert.strictEqual(true, isValid)
+  //     })
+  //   })
+  // })
 
   describe('getHash', function () {
     fixtures.valid.forEach(function (f) {
