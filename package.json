@@ -1,6 +1,6 @@
 {
-  "name": "bethjs-lib",
-  "version": "3.3.3",
+  "name": "@bithereum/bethjs-lib",
+  "version": "3.3.5",
   "description": "Client-side Bithereum JavaScript library",
   "main": "./src/index.js",
   "engines": {
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BTHPOS/bitcoinjs-lib.git"
+    "url": "git+https://github.com/BTHPOS/bitcoinjs-lib.git"
   },
   "files": [
     "src"
@@ -62,5 +62,13 @@
     "proxyquire": "^1.4.0",
     "standard": "^9.0.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BTHPOS/bitcoinjs-lib/issues"
+  },
+  "homepage": "https://github.com/BTHPOS/bitcoinjs-lib#readme",
+  "directories": {
+    "test": "test"
+  },
+  "author": "BitcoinJS Team + Dondrey Taylor"
 }

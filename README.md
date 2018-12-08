@@ -1,6 +1,6 @@
 # BithereumJS (bethjs-lib)
 [![Build Status](https://travis-ci.org/BTHPOS/bitcoinjs-lib.svg?branch=master)](https://travis-ci.org/BTHPOS/bitcoinjs-lib)
-[![NPM](https://img.shields.io/npm/v/bethjs-lib.svg)](https://www.npmjs.org/package/bethjs-lib)
+[![NPM](https://img.shields.io/npm/v/@bithereum/bethjs-lib.svg)](https://www.npmjs.org/package/@bithereum/bethjs-lib)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
