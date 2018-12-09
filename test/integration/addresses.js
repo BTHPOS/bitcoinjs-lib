@@ -97,25 +97,25 @@ describe('bitcoinjs-lib (addresses)', function () {
     assert.strictEqual(address, '3P4mrxQfmExfhxqjLnR2Ah4WES5EB1KBrN')
   })
 
-  it('can support the retrieval of transactions for an address (via 3PBP)', function (done) {
-    var keyPair = bitcoin.ECPair.makeRandom()
-    var address = keyPair.getAddress()
-
-    dhttp({
-      method: 'POST',
-      url: 'https://api.ei8ht.com.au/3/addrtxs',
-      body: {
-        addrs: [address],
-        height: 0
-      }
-    }, function (err, transactions) {
-      if (err) return done(err)
-
-      // random private keys [probably] have no transactions
-      assert.strictEqual(Object.keys(transactions).length, 0)
-      done()
-    })
-  })
+  // it('can support the retrieval of transactions for an address (via 3PBP)', function (done) {
+  //   var keyPair = bitcoin.ECPair.makeRandom()
+  //   var address = keyPair.getAddress()
+  //
+  //   dhttp({
+  //     method: 'POST',
+  //     url: 'https://api.ei8ht.com.au/3/addrtxs',
+  //     body: {
+  //       addrs: [address],
+  //       height: 0
+  //     }
+  //   }, function (err, transactions) {
+  //     if (err) return done(err)
+  //
+  //     // random private keys [probably] have no transactions
+  //     assert.strictEqual(Object.keys(transactions).length, 0)
+  //     done()
+  //   })
+  // })
 
   // other networks
   it('can generate a Testnet address', function () {
@@ -123,7 +123,6 @@ describe('bitcoinjs-lib (addresses)', function () {
     var keyPair = bitcoin.ECPair.makeRandom({ network: testnet, rng: rng })
     var wif = keyPair.toWIF()
     var address = keyPair.getAddress()
-
     assert.strictEqual(address, 'mubSzQNtZfDj1YdNP6pNDuZy6zs6GDn61L')
     assert.strictEqual(wif, 'cRgnQe9MUu1JznntrLaoQpB476M8PURvXVQB5R2eqms5tXnzNsrr')
   })

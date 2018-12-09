@@ -4,13 +4,13 @@
 module.exports = {
   bithereum: {
     messagePrefix: '\x1DBithereum Signed Message:\n',
-    bech32: 'btg',
+    bech32: 'bth',
     bip32: {
       public: 0x0488b21e,
       private: 0x0488ade4
     },
-    pubKeyHash: 0x26,
-    scriptHash: 0x17,
+    pubKeyHash: 0x19,
+    scriptHash: 0x28,
     wif: 0x80,
     forkHeight: 491407,
     equihash: {
@@ -38,13 +38,13 @@ module.exports = {
   },
   bithereumtestnet: {
     messagePrefix: '\x1DBithereum Signed Message:\n',
-    bech32: 'tbtg',
+    bech32: 'tbth',
     bip32: {
       public: 0x043587cf,
       private: 0x04358394
     },
-    pubKeyHash: 0x6f,
-    scriptHash: 0xc4,
+    pubKeyHash: 0x41,
+    scriptHash: 0x3F,
     wif: 0xef,
     forkHeight: 1,
     equihash: {
@@ -72,7 +72,7 @@ module.exports = {
   },
   bithereumregtest: {
     messagePrefix: '\x1DBithereum Signed Message:\n',
-    bech32: 'tbtg',
+    bech32: 'tbth',
     bip32: {
       public: 0x043587cf,
       private: 0x04358394

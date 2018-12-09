@@ -1,6 +1,6 @@
 {
   "name": "@bithereum/bethjs-lib",
-  "version": "3.3.7",
+  "version": "3.3.8",
   "description": "Client-side Bithereum JavaScript library",
   "main": "./src/index.js",
   "engines": {
@@ -57,7 +57,7 @@
     "dhttp": "^2.4.2",
     "hoodwink": "^1.0.0",
     "minimaldata": "^1.0.2",
-    "mocha": "^5.0.1",
+    "mocha": "^5.2.0",
     "nyc": "^11.4.1",
     "proxyquire": "^1.4.0",
     "standard": "^9.0.2"
