@@ -3,7 +3,7 @@
 var assert = require('assert')
 var bigi = require('bigi')
 var bitcoin = require('../../')
-var dhttp = require('dhttp/200')
+// var dhttp = require('dhttp/200')
 
 // deterministic RNG for testing only
 function rng () { return Buffer.from('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz') }
