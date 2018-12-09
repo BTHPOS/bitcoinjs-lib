@@ -1,16 +1,13 @@
 /* global describe, it */
 
 var assert = require('assert')
-var bscript = require('../src/script')
-var bcrypto = require('../src/crypto')
-var ECPair = require('../src/ecpair')
 var NETWORKS = require('../src/networks')
 var TransactionBuilder = require('../src/transaction_builder')
 var Transaction = require('../src/transaction')
 
 describe('TransactionBuilder', function () {
   var network = NETWORKS['bithereum']
-  
+
   it('bethtestcase_multisig_1', function () {
     var value = 50 * 1e8
 
