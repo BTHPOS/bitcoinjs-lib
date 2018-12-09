@@ -29,7 +29,7 @@ Master is not stable; it is our development branch, and [only tagged releases ma
 
 ## Installation
 ``` bash
-npm install bethjs-lib
+npm install @bithereum/bethjs-lib
 ```
 
 ## Setup
