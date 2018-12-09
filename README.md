@@ -35,7 +35,7 @@ npm install bethjs-lib
 ## Setup
 ### Node.js
 ``` javascript
-var bitcoin = require('bethjs-lib')
+var bitcoin = require('@bithereum/bethjs-lib')
 ```
 
 ### Browser
@@ -46,7 +46,7 @@ These steps are advisory only,  and may not be suitable for your application.
 
 For your project, create an `index.js` file
 ``` javascript
-let bitcoin = require('bethjs-lib')
+let bitcoin = require('@bithereum/bethjs-lib')
 
 // your code here
 function myFunction () {
