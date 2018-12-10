@@ -4,9 +4,31 @@ var assert = require('assert')
 var NETWORKS = require('../src/networks')
 var TransactionBuilder = require('../src/transaction_builder')
 var Transaction = require('../src/transaction')
+var ECPair = require('../src/ecpair')
+var bcrypto = require('../src/crypto')
+var bscript = require('../src/script')
 
 describe('TransactionBuilder', function () {
   var network = NETWORKS['bithereum']
+
+//   it('bethtestcase_1_to_1', function () {
+//     var keyPair = ECPair.fromWIF('cRpeFjBsnfemov5H2dUL4h6KrEFDASSAcDhXdKfr4J5DHNsHF2d5', NETWORKS['bithereumtestnet'])
+//     var address = keyPair.getAddress()
+//     var pk = bcrypto.hash160(keyPair.getPublicKeyBuffer())
+//     var spk = bscript.pubKeyHash.output.encode(pk)
+//     var value = 10 * 1e8;
+//
+//     var txb = new bithereum.TransactionBuilder(network)
+//     txb.addInput('3a2a2ebb0a7d92e04f92bf7382dc746f3a2e69c6ebbea732a101e465bd257393', 1, bithereum.Transaction.DEFAULT_SEQUENCE, spk);
+//     txb.addOutput('TBgHSyLc3Lo8781F63EiEkHYis2NP6Sn1Y', value - 1000);
+//     txb.setVersion(2);
+//
+//     var hashType = bithereum.Transaction.SIGHASH_ALL | bithereum.Transaction.SIGHASH_FORKID
+//     txb.sign(0, keyPair, null, hashType, value);
+//     // var build = txb.build();
+//     // var hex = build.toHex();
+//   })
+
 
   it('bethtestcase_multisig_1', function () {
     var value = 50 * 1e8
