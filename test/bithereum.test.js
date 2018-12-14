@@ -9,7 +9,7 @@
 // var bcrypto = require('../src/crypto')
 // var bscript = require('../src/script')
 
-describe('TransactionBuilder', function () {
+// describe('TransactionBuilder', function () {
   // var network = NETWORKS['bithereum']
 
 //   it('bethtestcase_1_to_1', function () {
@@ -69,4 +69,4 @@ describe('TransactionBuilder', function () {
   //   assert.equal(txHex, hex)
   // })
 
-})
+// })
