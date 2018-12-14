@@ -1,15 +1,16 @@
 /* global describe, it */
 
-var assert = require('assert')
-var NETWORKS = require('../src/networks')
-var TransactionBuilder = require('../src/transaction_builder')
-var Transaction = require('../src/transaction')
+// var assert = require('assert')
+// var NETWORKS = require('../src/networks')
+// var TransactionBuilder = require('../src/transaction_builder')
+// var Transaction = require('../src/transaction')
+
 // var ECPair = require('../src/ecpair')
 // var bcrypto = require('../src/crypto')
 // var bscript = require('../src/script')
 
 describe('TransactionBuilder', function () {
-  var network = NETWORKS['bithereum']
+  // var network = NETWORKS['bithereum']
 
 //   it('bethtestcase_1_to_1', function () {
 //     var keyPair = ECPair.fromWIF('cRpeFjBsnfemov5H2dUL4h6KrEFDASSAcDhXdKfr4J5DHNsHF2d5', NETWORKS['bithereumtestnet'])
