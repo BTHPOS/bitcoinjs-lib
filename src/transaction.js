@@ -36,7 +36,7 @@ Transaction.SIGHASH_ANYONECANPAY = 0x80
 Transaction.SIGHASH_FORKID = 0x40
 Transaction.ADVANCED_TRANSACTION_MARKER = 0x00
 Transaction.ADVANCED_TRANSACTION_FLAG = 0x01
-Transaction.FORKID_BTH = 0x4F // 79
+Transaction.FORKID_BTH = 0x55 // 85
 Transaction.FORKID_BCH = 0x00
 
 var EMPTY_SCRIPT = Buffer.allocUnsafe(0)

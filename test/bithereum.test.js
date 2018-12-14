@@ -4,9 +4,9 @@ var assert = require('assert')
 var NETWORKS = require('../src/networks')
 var TransactionBuilder = require('../src/transaction_builder')
 var Transaction = require('../src/transaction')
-var ECPair = require('../src/ecpair')
-var bcrypto = require('../src/crypto')
-var bscript = require('../src/script')
+// var ECPair = require('../src/ecpair')
+// var bcrypto = require('../src/crypto')
+// var bscript = require('../src/script')
 
 describe('TransactionBuilder', function () {
   var network = NETWORKS['bithereum']
