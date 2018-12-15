@@ -23,6 +23,7 @@ describe('TransactionBuilder', function () {
 //     txb.addInput('3a2a2ebb0a7d92e04f92bf7382dc746f3a2e69c6ebbea732a101e465bd257393', 1, bithereum.Transaction.DEFAULT_SEQUENCE, spk);
 //     txb.addOutput('TBgHSyLc3Lo8781F63EiEkHYis2NP6Sn1Y', value - 1000);
 //     txb.setVersion(2);
+// .   txb.enableBithereum(true);    
 //
 //     var hashType = bithereum.Transaction.SIGHASH_ALL | bithereum.Transaction.SIGHASH_FORKID
 //     txb.sign(0, keyPair, null, hashType, value);
