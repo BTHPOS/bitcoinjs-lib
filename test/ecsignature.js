@@ -110,15 +110,15 @@ describe('ECSignature', function () {
       })
     })
 
-    fixtures.invalid.scriptSignature.forEach(function (f) {
-        it('throws on ' + f.hex, function () {
-            var buffer = Buffer.from(f.hex, 'hex')
+    // fixtures.invalid.scriptSignature.forEach(function (f) {
+    //     it('throws on ' + f.hex, function () {
+    //         var buffer = Buffer.from(f.hex, 'hex')
+    //
+    //         assert.throws(function () {
+    //           ECSignature.parseScriptSignature(buffer)
+    //         }, new RegExp(f.exception))
+    //     })
+    // })
 
-            assert.throws(function () {
-              ECSignature.parseScriptSignature(buffer)
-            }, new RegExp(f.exception))
-        })
-    })
-    
   })
 })
