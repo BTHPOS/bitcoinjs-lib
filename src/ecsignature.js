@@ -48,8 +48,8 @@ ECSignature.fromDER = function (buffer) {
 ECSignature.parseScriptSignature = function (buffer) {
   var hashType = buffer.readUInt8(buffer.length - 1)
   var hashTypeMod = hashType & ~0xc0
-
-  if (hashTypeMod <= 0x00 || hashTypeMod >= 0x04) throw new Error('Invalid hashType ' + hashType)
+  console.log(hashTypeMod)
+  if (hashTypeMod <= 0 || hashTypeMod >= 18) throw new Error('Invalid hashType ' + hashType)
 
   return {
     signature: ECSignature.fromDER(buffer.slice(0, -1)),

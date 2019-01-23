@@ -79,48 +79,40 @@ describe('ECSignature', function () {
   describe('toScriptSignature', function () {
     fixtures.valid.forEach(function (f) {
       it('exports ' + f.scriptSignature.hex + ' correctly', function () {
-        // var signature = new ECSignature(new BigInteger(f.signature.r), new BigInteger(f.signature.s))
-
-        // var scriptSignature = signature.toScriptSignature(f.scriptSignature.hashType)
-        // assert.strictEqual(scriptSignature.toString('hex'), f.scriptSignature.hex)
-        assert.strictEqual(true, true);
+        var signature = new ECSignature(new BigInteger(f.signature.r), new BigInteger(f.signature.s))
+        var scriptSignature = signature.toScriptSignature(f.scriptSignature.hashType)
+        assert.strictEqual(scriptSignature.toString('hex'), f.scriptSignature.hex)
       })
     })
 
-    // fixtures.invalid.scriptSignature.forEach(function (f) {
-    //   it('throws ' + f.exception, function () {
-    //     var signature = new ECSignature(new BigInteger(f.signature.r), new BigInteger(f.signature.s))
-    //
-    //     assert.throws(function () {
-    //       signature.toScriptSignature(f.hashType)
-    //     }, new RegExp(f.exception))
-    //   })
-    // })
-
+    fixtures.invalid.scriptSignature.forEach(function (f) {
+      it('throws ' + f.exception, function () {
+        var signature = new ECSignature(new BigInteger(f.signature.r), new BigInteger(f.signature.s))
+        assert.throws(function () {
+          signature.toScriptSignature(f.hashType)
+        }, new RegExp(f.exception))
+      })
+    })
   })
 
   describe('parseScriptSignature', function () {
     fixtures.valid.forEach(function (f) {
       it('imports ' + f.scriptSignature.hex + ' correctly', function () {
-        // var buffer = Buffer.from(f.scriptSignature.hex, 'hex')
-        // var parsed = ECSignature.parseScriptSignature(buffer)
-
-          assert.strictEqual(true, true);
-          // assert.strictEqual(parsed.signature.r.toString(), f.signature.r)
-          // assert.strictEqual(parsed.signature.s.toString(), f.signature.s)
-          // assert.strictEqual(parsed.hashType, f.scriptSignature.hashType)
+        var buffer = Buffer.from(f.scriptSignature.hex, 'hex')
+        var parsed = ECSignature.parseScriptSignature(buffer)
+        assert.strictEqual(parsed.signature.r.toString(), f.signature.r)
+        assert.strictEqual(parsed.signature.s.toString(), f.signature.s)
+        assert.strictEqual(parsed.hashType, f.scriptSignature.hashType)
       })
     })
 
-    // fixtures.invalid.scriptSignature.forEach(function (f) {
-    //     it('throws on ' + f.hex, function () {
-    //         var buffer = Buffer.from(f.hex, 'hex')
-    //
-    //         assert.throws(function () {
-    //           ECSignature.parseScriptSignature(buffer)
-    //         }, new RegExp(f.exception))
-    //     })
-    // })
-
+    fixtures.invalid.scriptSignature.forEach(function (f) {
+      it('throws on ' + f.hex, function () {
+        var buffer = Buffer.from(f.hex, 'hex')
+        assert.throws(function () {
+          ECSignature.parseScriptSignature(buffer)
+        }, new RegExp(f.exception))
+      })
+    })
   })
 })
